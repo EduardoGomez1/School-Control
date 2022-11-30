@@ -20,7 +20,11 @@ class PassportAuthController extends Controller
         echo "Registro Eliminado";
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
+        // $datos = $request->json()->all();
+        // dd($request);
+
         $this->validate($request, [
             'name' => 'required|min:4',
             'email' => 'required|email|unique:users',
@@ -33,29 +37,28 @@ class PassportAuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        $token = $user->createToken('LaravelAuthApp')->access_token;
+        $token = $user->createToken('LaravelAuthApp')->accessToken;
         return response()->json(['token' => $token], 200);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $data = [
             'email' => $request->email,
             'password' => $request->password,
         ];
 
-        if(auth()->attempt($data)){
+        if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
             return response()->json(['token' => $token], 200);
-        }
-        else{
+        } else {
             return response()->json(['error' => 'No Autorizado'], 401);
         }
     }
 
-    public function authenticatedUserDetails(){
+    public function authenticatedUserDetails()
+    {
         //returns details
         return response()->json(['authenticated-user' => auth()->user()], 200);
     }
-
-    
 }

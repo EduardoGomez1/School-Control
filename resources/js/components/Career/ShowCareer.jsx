@@ -1,32 +1,37 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
-const ruta = 'http://localhost:81/api';
+const ruta = "http://localhost:8000/api";
 const ShowCareer = () => {
-    const [careers, setCareers] = useState([])
+    const HEADERS = {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+        },
+    };
+
+    const [careers, setCareers] = useState([]);
 
     useEffect(() => {
-        getAllCareers()
-    }, [])
+        getAllCareers();
+    }, []);
 
     const getAllCareers = async () => {
-        const response = await axios.get(`${ruta}/career_index`)
-        setCareers(response.data)
+        const response = await axios.get(`${ruta}/career_index`, HEADERS);
+        setCareers(response.data);
         //console.log(response.data);
-    }
+    };
 
     const deleteCareers = async (id) => {
-        await axios.post(`${ruta}/career_delete/${id}`)
+        await axios.post(`${ruta}/career_delete/${id}`, {}, HEADERS);
         getAllCareers();
-    }
-
+    };
 
     return (
         <div className="text-center">
-            <table className='table table-striped mb-3'>
-                <thead className='bg-primary text-white'>
+            <table className="table table-striped mb-3">
+                <thead className="bg-primary text-white">
                     <tr>
                         <th>ID</th>
                         <th>Clave</th>
@@ -45,22 +50,41 @@ const ShowCareer = () => {
                             <td> {career.area} </td>
                             <td> {career.idSchool} </td>
                             <td>
-                                <Link to={`/editCareer/${career.id}`} className='btn btn-warning'>Editar</Link>
-                                <button onClick={() => deleteCareers(career.id)} className='btn btn-danger'>Eliminar</button>
+                                <Link
+                                    to={`/editCareer/${career.id}`}
+                                    className="btn btn-warning"
+                                >
+                                    Editar
+                                </Link>
+                                <button
+                                    onClick={() => deleteCareers(career.id)}
+                                    className="btn btn-danger"
+                                >
+                                    Eliminar
+                                </button>
                             </td>
-
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <div className='gap-2'>
-                <Link to="/createCareer" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Registrar Nueva Carrera</Link>
+            <div className="gap-2">
+                <Link
+                    to="/createCareer"
+                    className="btn btn-success btn-lg mt-2 mb-2 text-white"
+                >
+                    Registrar Nueva Carrera
+                </Link>
                 <Link to="/HomePage">
-                    <button type="button" className="btn btn-primary btn-lg mt-2 mb-2 text-white">Regresar</button>
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-lg mt-2 mb-2 text-white"
+                    >
+                        Regresar
+                    </button>
                 </Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ShowCareer
+export default ShowCareer;

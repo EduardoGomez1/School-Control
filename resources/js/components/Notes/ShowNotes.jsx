@@ -1,32 +1,40 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
-const ruta = 'http://localhost:81/api';
+const ruta = "http://localhost:8000/api";
 const ShowNotes = () => {
-    const [notes, setNotes] = useState([])
+    const HEADERS = {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+        },
+    };
+
+    const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        getAllNotes()
-    }, [])
+        getAllNotes();
+    }, []);
 
     const getAllNotes = async () => {
-        const response = await axios.get(`${ruta}/studentSubject_index`)
-        setNotes(response.data)
+        const response = await axios.get(
+            `${ruta}/studentSubject_index`,
+            HEADERS
+        );
+        setNotes(response.data);
         //console.log(response.data);
-    }
+    };
 
     const deleteNotes = async (id) => {
-        await axios.post(`${ruta}/studentSubject_delete/${id}`)
+        await axios.post(`${ruta}/studentSubject_delete/${id}`, {}, HEADERS);
         getAllNotes();
-    }
-
+    };
 
     return (
         <div className="text-center">
-            <table className='table table-striped mb-3'>
-                <thead className='bg-primary text-white'>
+            <table className="table table-striped mb-3">
+                <thead className="bg-primary text-white">
                     <tr>
                         <th>Id</th>
                         <th>Id Materia</th>
@@ -43,22 +51,41 @@ const ShowNotes = () => {
                             <td> {note.idStudent} </td>
                             <td> {note.cal} </td>
                             <td>
-                                <Link to={`/editNotes/${note.id}`} className='btn btn-warning'>Editar</Link>
-                                <button onClick={() => deleteProfessors(note.id)} className='btn btn-danger'>Eliminar</button>
+                                <Link
+                                    to={`/editNotes/${note.id}`}
+                                    className="btn btn-warning"
+                                >
+                                    Editar
+                                </Link>
+                                <button
+                                    onClick={() => deleteNotes(note.id)}
+                                    className="btn btn-danger"
+                                >
+                                    Eliminar
+                                </button>
                             </td>
-
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <div className='gap-2'>
-                <Link to="/createNotes" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Registrar nueva calificacion</Link>
+            <div className="gap-2">
+                <Link
+                    to="/createNotes"
+                    className="btn btn-success btn-lg mt-2 mb-2 text-white"
+                >
+                    Registrar nueva calificacion
+                </Link>
                 <Link to="/HomePage">
-                    <button type="button" className="btn btn-primary btn-lg mt-2 mb-2 text-white">Regresar</button>
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-lg mt-2 mb-2 text-white"
+                    >
+                        Regresar
+                    </button>
                 </Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ShowNotes
+export default ShowNotes;

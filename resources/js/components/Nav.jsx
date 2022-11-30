@@ -1,17 +1,16 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link, useNavigate } from "react-router-dom";
 const Navigation = () => {
 
-    let users = JSON.parse(localStorage.getItem('user-info'))
+    // let users = JSON.parse(localStorage.getItem('user-info'))
     const navigate = useNavigate();
     function logOut() {
         localStorage.clear();
-        navigate.push('/');
+        navigate('/');
     }
 
-    
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
             <Container>

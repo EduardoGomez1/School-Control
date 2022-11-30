@@ -1,90 +1,108 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-
-
-const ruta = 'http://localhost:81/api/school_insert';
+const ruta = "http://localhost:8000/api/school_insert";
 
 const CreateSchool = () => {
-    const [clave, setClave] = useState('')
-    const [name, setName] = useState('')
-    const [address, setAddress] = useState('')
-    const [tel, setTel] = useState('')
-    const [email, setEmail] = useState('@gmail.com')
-    const navigate = useNavigate()
+    const HEADERS = {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+        },
+    };
+
+    const [clave, setClave] = useState("");
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [tel, setTel] = useState("");
+    const [email, setEmail] = useState("@gmail.com");
+    const navigate = useNavigate();
 
     const store = async (e) => {
-        e.preventDefault()
-        await axios.post(ruta, {
-            clave: clave,
-            name: name,
-            address: address,
-            tel: tel,
-            email: email
-        })
-        navigate.push('/showSchool')
-    }
+        e.preventDefault();
+        await axios.post(
+            ruta,
+            {
+                clave: clave,
+                name: name,
+                address: address,
+                tel: tel,
+                email: email,
+            },
+            HEADERS
+        );
+        navigate("/showSchool");
+    };
 
     return (
         <div>
-            <h3 className='text-center'>Nueva Escuela</h3>
+            <h3 className="text-center">Nueva Escuela</h3>
             <form onSubmit={store}>
-                <div className='text-center'>
-                    <div className='mb-3'>
-                        <label className='form-label'>Clave</label>
+                <div className="text-center">
+                    <div className="mb-3">
+                        <label className="form-label">Clave</label>
                         <input
                             value={clave}
                             onChange={(e) => setClave(e.target.value)}
-                            type='text'
-                            className='form-control text-center'
+                            type="text"
+                            className="form-control text-center"
                         />
                     </div>
-                    <div className='mb-3'>
-                        <label className='form-label'>Nombre</label>
+                    <div className="mb-3">
+                        <label className="form-label">Nombre</label>
                         <input
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            type='text'
-                            className='form-control text-center'
+                            type="text"
+                            className="form-control text-center"
                         />
                     </div>
-                    <div className='mb-3'>
-                        <label className='form-label'>Direccion</label>
+                    <div className="mb-3">
+                        <label className="form-label">Direccion</label>
                         <input
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
-                            type='text'
-                            className='form-control text-center'
+                            type="text"
+                            className="form-control text-center"
                         />
                     </div>
-                    <div className='mb-3'>
-                        <label className='form-label '>Telefono</label>
+                    <div className="mb-3">
+                        <label className="form-label ">Telefono</label>
                         <input
                             value={tel}
                             onChange={(e) => setTel(e.target.value)}
-                            type='text'
-                            className='form-control text-center'
+                            type="text"
+                            className="form-control text-center"
                         />
                     </div>
-                    <div className='mb-3'>
-                        <label className='form-label'>Correo</label>
+                    <div className="mb-3">
+                        <label className="form-label">Correo</label>
                         <input
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            type='email'
-                            className='form-control text-center'
+                            type="email"
+                            className="form-control text-center"
                         />
                     </div>
-                    <button type='submit' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Registrar</button>
+                    <button
+                        type="submit"
+                        className="btn btn-success btn-lg mt-2 mb-2 text-white"
+                    >
+                        Registrar
+                    </button>
                     <Link to="/showSchool">
-                        <button type="button" className="btn btn-danger btn-lg mt-2 mb-2 text-white">Cancelar</button>
+                        <button
+                            type="button"
+                            className="btn btn-danger btn-lg mt-2 mb-2 text-white"
+                        >
+                            Cancelar
+                        </button>
                     </Link>
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default CreateSchool;

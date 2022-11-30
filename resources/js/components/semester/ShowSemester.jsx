@@ -1,32 +1,37 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
-const ruta = 'http://localhost:81/api';
+const ruta = "http://localhost:8000/api";
 const ShowSemester = () => {
-    const [semesters, setSemesters] = useState([])
+    const HEADERS = {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+        },
+    };
+
+    const [semesters, setSemesters] = useState([]);
 
     useEffect(() => {
-        getAllSemesters()
-    }, [])
+        getAllSemesters();
+    }, []);
 
     const getAllSemesters = async () => {
-        const response = await axios.get(`${ruta}/semester_index`)
-        setSemesters(response.data)
+        const response = await axios.get(`${ruta}/semester_index`, HEADERS);
+        setSemesters(response.data);
         //console.log(response.data);
-    }
+    };
 
     const deleteSemesters = async (id) => {
-        await axios.post(`${ruta}/semester_delete/${id}`)
+        await axios.post(`${ruta}/semester_delete/${id}`, {}, HEADERS);
         getAllSemesters();
-    }
-
+    };
 
     return (
         <div className="text-center">
-            <table className='table table-striped mb-3'>
-                <thead className='bg-primary text-white'>
+            <table className="table table-striped mb-3">
+                <thead className="bg-primary text-white">
                     <tr>
                         <th>ID</th>
                         <th>ID Carrera</th>
@@ -43,24 +48,41 @@ const ShowSemester = () => {
                             <td> {semester.name} </td>
                             <td> {semester.period} </td>
                             <td>
-                                <Link to={`/editSemester/${semester.id}`} className='btn btn-warning'>Editar</Link>
-                                <button onClick={() => deleteSemesters(semester.id)} className='btn btn-danger'>Eliminar</button>
+                                <Link
+                                    to={`/editSemester/${semester.id}`}
+                                    className="btn btn-warning"
+                                >
+                                    Editar
+                                </Link>
+                                <button
+                                    onClick={() => deleteSemesters(semester.id)}
+                                    className="btn btn-danger"
+                                >
+                                    Eliminar
+                                </button>
                             </td>
-
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <div className='gap-2'>
-                <Link to="/createSemester" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Registrar nuevo Semestre</Link>
+            <div className="gap-2">
+                <Link
+                    to="/createSemester"
+                    className="btn btn-success btn-lg mt-2 mb-2 text-white"
+                >
+                    Registrar nuevo Semestre
+                </Link>
                 <Link to="/HomePage">
-                    <button type="button" className="btn btn-primary btn-lg mt-2 mb-2 text-white">Regresar</button>
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-lg mt-2 mb-2 text-white"
+                    >
+                        Regresar
+                    </button>
                 </Link>
             </div>
         </div>
+    );
+};
 
-
-    )
-}
-
-export default ShowSemester
+export default ShowSemester;

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { Container, Row, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const ruta = 'http://localhost:81/api/login';
+const ruta = 'http://localhost:8000/api/login';
 
 const Login = () => {
 
@@ -30,21 +29,20 @@ const Login = () => {
     formData.append("password", formValue.password)
     axios.post(ruta,
       formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Accept': 'aplication/json',
-        }
-      }
+      // {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //     'Accept': 'aplication/json',
+      //   }
+      // }
     ).then(response => {
-      console.log('response');
-      console.log(response.data.token);
-      localStorage.setItem("user-info", JSON.stringify(response))
-      navigate.push({
+
+      localStorage.setItem("user-info", response.data.token)
+      navigate({
 
         pathname: "/HomePage",
         state: { token: response.data.token }
-        
+
       }
       )
     }).catch(error => {
@@ -105,6 +103,6 @@ const Login = () => {
 export default Login;
 
 
-if (document.getElementById('main')) {
-  ReactDOM.render(<Login />, document.getElementById('main'));
-}
+// if (document.getElementById('main')) {
+//   ReactDOM.render(<Login />, document.getElementById('main'));
+// }

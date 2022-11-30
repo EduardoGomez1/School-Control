@@ -1,34 +1,39 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
-const ruta = 'http://localhost:81/api';
+const ruta = "http://localhost:8000/api";
 const defaultSelectValue = "---";
 
 const ShowProfessor = () => {
-    const [professors, setProfessors] = useState([])
+    const HEADERS = {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+        },
+    };
+
+    const [professors, setProfessors] = useState([]);
 
     useEffect(() => {
-        getAllProfessors()
-    }, [])
+        getAllProfessors();
+    }, []);
 
     const getAllProfessors = async () => {
-        const response = await axios.get(`${ruta}/professor_index`)
-        setProfessors(response.data)
+        const response = await axios.get(`${ruta}/professor_index`, HEADERS);
+        setProfessors(response.data);
         //console.log(response.data);
-    }
+    };
 
     const deleteProfessors = async (id) => {
-        await axios.post(`${ruta}/professor_delete/${id}`)
+        await axios.post(`${ruta}/professor_delete/${id}`, {}, HEADERS);
         getAllProfessors();
-    }
-
+    };
 
     return (
         <div className="text-center">
-            <table className='table table-striped mb-3'>
-                <thead className='bg-primary text-white'>
+            <table className="table table-striped mb-3">
+                <thead className="bg-primary text-white">
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -61,22 +66,43 @@ const ShowProfessor = () => {
                             <td> {professor.academic_degree} </td>
                             <td> {professor.specialty} </td>
                             <td>
-                                <Link to={`/editProfessor/${professor.id}`} className='btn btn-warning'>Editar</Link>
-                                <button onClick={() => deleteProfessors(professor.id)} className='btn btn-danger'>Eliminar</button>
+                                <Link
+                                    to={`/editProfessor/${professor.id}`}
+                                    className="btn btn-warning"
+                                >
+                                    Editar
+                                </Link>
+                                <button
+                                    onClick={() =>
+                                        deleteProfessors(professor.id)
+                                    }
+                                    className="btn btn-danger"
+                                >
+                                    Eliminar
+                                </button>
                             </td>
-
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <div className='gap-2'>
-                <Link to="/createProfessor" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Registrar nuevo Profesor</Link>
+            <div className="gap-2">
+                <Link
+                    to="/createProfessor"
+                    className="btn btn-success btn-lg mt-2 mb-2 text-white"
+                >
+                    Registrar nuevo Profesor
+                </Link>
                 <Link to="/HomePage">
-                    <button type="button" className="btn btn-primary btn-lg mt-2 mb-2 text-white">Regresar</button>
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-lg mt-2 mb-2 text-white"
+                    >
+                        Regresar
+                    </button>
                 </Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ShowProfessor
+export default ShowProfessor;

@@ -1,17 +1,18 @@
 
-import { Container } from 'react-bootstrap'
-import React, { useEffect, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 
-
-const ruta = 'http://localhost:81/api/register';
+const ruta = 'http://localhost:8000/api/register';
 
 const Register = () => {
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
-            navigate.push("/HomePage")
+            navigate("/HomePage")
         }
     }, [])
 
@@ -19,24 +20,25 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const navigate = useNavigate()
-
     async function signUp() {
         let item = { name, email, password }
         console.warn(item)
 
-        let result = await fetch(ruta, {
-            method: 'POST',
-            body: JSON.stringify(item),
-            headers: {
-                "Content-Type": 'multipart/form-data',
-                "Accept": 'aplication/json',
-            }
-        });
+        // let result = await axios(ruta, {
+        //     method: 'POST',
+        //     body: JSON.stringify(item),
+        //     headers: {
+        //         "Content-Type": 'multipart/form-data',
+        //         // "Accept": 'aplication/json',
+        //     }
+        // });
 
-        result = await result.json()
-        localStorage.setItem("user-info", JSON.stringify(result))
-        navigate.push("/HomePage")
+        let result = await axios.post(ruta, item)
+
+        if(result){
+            localStorage.setItem("user-info", JSON.stringify(result?.data?.token))
+            navigate("/HomePage")
+        }
     }
 
 

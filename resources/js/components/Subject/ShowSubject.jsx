@@ -1,32 +1,37 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
-const ruta = 'http://localhost:81/api';
+const ruta = "http://localhost:8000/api";
 const ShowSubject = () => {
-    const [subjects, setSubjects] = useState([])
+    const HEADERS = {
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+        },
+    };
+
+    const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {
-        getAllSubjects()
-    }, [])
+        getAllSubjects();
+    }, []);
 
     const getAllSubjects = async () => {
-        const response = await axios.get(`${ruta}/subject_index`)
-        setSubjects(response.data)
+        const response = await axios.get(`${ruta}/subject_index`, HEADERS);
+        setSubjects(response.data);
         //console.log(response.data);
-    }
+    };
 
     const deleteSubjects = async (id) => {
-        await axios.post(`${ruta}/subject_delete/${id}`)
+        await axios.post(`${ruta}/subject_delete/${id}`, {}, HEADERS);
         getAllSubjects();
-    }
-
+    };
 
     return (
         <div className="text-center">
-            <table className='table table-striped mb-3'>
-                <thead className='bg-primary text-white'>
+            <table className="table table-striped mb-3">
+                <thead className="bg-primary text-white">
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -43,24 +48,41 @@ const ShowSubject = () => {
                             <td> {subject.credit} </td>
                             <td> {subject.idSemester} </td>
                             <td>
-                                <Link to={`/editSubject/${subject.id}`} className='btn btn-warning'>Editar</Link>
-                                <button onClick={() => deleteSubjects(subject.id)} className='btn btn-danger'>Eliminar</button>
+                                <Link
+                                    to={`/editSubject/${subject.id}`}
+                                    className="btn btn-warning"
+                                >
+                                    Editar
+                                </Link>
+                                <button
+                                    onClick={() => deleteSubjects(subject.id)}
+                                    className="btn btn-danger"
+                                >
+                                    Eliminar
+                                </button>
                             </td>
-
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <div className='gap-2'>
-                <Link to="/createSubject" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Registrar nueva Materia</Link>
+            <div className="gap-2">
+                <Link
+                    to="/createSubject"
+                    className="btn btn-success btn-lg mt-2 mb-2 text-white"
+                >
+                    Registrar nueva Materia
+                </Link>
                 <Link to="/HomePage">
-                    <button type="button" className="btn btn-primary btn-lg mt-2 mb-2 text-white">Regresar</button>
+                    <button
+                        type="button"
+                        className="btn btn-primary btn-lg mt-2 mb-2 text-white"
+                    >
+                        Regresar
+                    </button>
                 </Link>
             </div>
         </div>
+    );
+};
 
-
-    )
-}
-
-export default ShowSubject
+export default ShowSubject;
