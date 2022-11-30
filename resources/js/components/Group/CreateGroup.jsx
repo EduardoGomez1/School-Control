@@ -1,18 +1,18 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
-const ruta = 'http://localhost:8000/api/group_insert';
-const ruta3 = 'http://localhost:8000/api/career_index'
+const ruta = 'http://localhost:81/api/group_insert';
+const ruta3 = 'http://localhost:81/api/career_index'
 
 const CreateGroup = () => {
     const [name, setName] = useState('')
     const [size, setSize] = useState('')
     const [idCar, setIdCar] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const [career, setCareer] = useState([])
 
@@ -23,7 +23,7 @@ const CreateGroup = () => {
             size: size,
             idCar: idCar
         })
-        history.push('/showGroup')
+        navigate.push('/showGroup')
     }
 
 

@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/studentSubject_update/'
-const ruta2 = 'http://localhost:8000/api/studentSubject_show/'
-const ruta3 = 'http://localhost:8000/api/subject_index'
-const ruta4 = 'http://localhost:8000/api/student_index'
+const ruta = 'http://localhost:81/api/studentSubject_update/'
+const ruta2 = 'http://localhost:81/api/studentSubject_show/'
+const ruta3 = 'http://localhost:81/api/subject_index'
+const ruta4 = 'http://localhost:81/api/student_index'
 
 
 
@@ -16,7 +16,7 @@ const EditNotes = () => {
     const [idStudent, setIdStudent] = useState('')
     const [cal, setCal] = useState('')
 
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
 
@@ -30,7 +30,7 @@ const EditNotes = () => {
             idStudent: idStudent,
             cal: cal
         })
-        history.push('/showNotes')
+        navigate.push('/showNotes')
     }
 
     useEffect(() => {

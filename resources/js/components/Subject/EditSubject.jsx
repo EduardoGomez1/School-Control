@@ -2,17 +2,17 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/subject_update/';
-const ruta2 = 'http://localhost:8000/api/subject_show/';
-const ruta3 = 'http://localhost:8000/api/semester_index';
+const ruta = 'http://localhost:81/api/subject_update/';
+const ruta2 = 'http://localhost:81/api/subject_show/';
+const ruta3 = 'http://localhost:81/api/semester_index';
 
 const EditSubject = () => {
     const [name, setName] = useState('')
     const [credit, setCredit] = useState('')
     const [idSemester, setIdSemester] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     const [semester, setSemester] = useState([])
@@ -24,7 +24,7 @@ const EditSubject = () => {
             credit: credit,
             idSemester: idSemester
         })
-        history.push('/showSubject')
+        navigate.push('/showSubject')
     }
 
 

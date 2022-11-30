@@ -2,12 +2,12 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
-const ruta = 'http://localhost:8000/api/semester_insert';
-const ruta3 = 'http://localhost:8000/api/career_index';
+const ruta = 'http://localhost:81/api/semester_insert';
+const ruta3 = 'http://localhost:81/api/career_index';
 
 
 const defaultSelectValue = "---";
@@ -16,7 +16,7 @@ const CreateSemester = () => {
     const [idCareer, setIdCareer] = useState('')
     const [name, setName] = useState('')
     const [period, setPeriod] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const [career, setCareer] = useState([])
 
@@ -27,7 +27,7 @@ const CreateSemester = () => {
             name: name,
             period: period
         })
-        history.push('/showSemeste')
+        navigate.push('/showSemeste')
     }
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 
-const ruta = 'http://localhost:8000/api';
+const ruta = 'http://localhost:81/api';
 const ShowUser = () => {
     const [users, setUsers] = useState([])
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 const Navigation = () => {
 
     let users = JSON.parse(localStorage.getItem('user-info'))
-    const history = useHistory();
+    const navigate = useNavigate();
     function logOut() {
         localStorage.clear();
-        history.push('/');
+        navigate.push('/');
     }
 
     

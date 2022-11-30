@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/semester_update/';
-const ruta2 = 'http://localhost:8000/api/semester_show/';
-const ruta3 = 'http://localhost:8000/api/career_index';
+const ruta = 'http://localhost:81/api/semester_update/';
+const ruta2 = 'http://localhost:81/api/semester_show/';
+const ruta3 = 'http://localhost:81/api/career_index';
 
 const defaultSelectValue = "---";
 
@@ -14,7 +14,7 @@ const EditSemester = () => {
     const [idCareer, setIdCareer] = useState('')
     const [name, setName] = useState('')
     const [period, setPeriod] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     const [career, setCareer] = useState([])
@@ -26,7 +26,7 @@ const EditSemester = () => {
             name: name,
             period: period
         })
-        history.push('/showSemeste')
+        navigate.push('/showSemeste')
     }
 
 

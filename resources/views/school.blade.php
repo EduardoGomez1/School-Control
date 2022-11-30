@@ -3,7 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>School</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+      />
 	<style> .navbar{margin-bottom: 20px;} </style>
 </head>
 <body>
@@ -12,14 +17,16 @@
 </h1>
 <div id="main"></div>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
-        <script
-        src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
-        crossorigin></script>
-        <script
-        src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-        crossorigin></script>
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>
 
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+          crossorigin></script>
+        
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin></script>
+        
         <script>var Alert = ReactBootstrap.Alert;</script>
 </body>
 </html>

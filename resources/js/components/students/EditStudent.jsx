@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/student_update/'
-const ruta2 = 'http://localhost:8000/api/student_show/'
+const ruta = 'http://localhost:81/api/student_update/'
+const ruta2 = 'http://localhost:81/api/student_show/'
 
 const defaultSelectValue = "---";
 
@@ -18,7 +18,7 @@ const EditStudent = () => {
     const [curp, setCurp] = useState('')
     const [address, setAddress] = useState('')
     const [tel, setTel] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     const update = async (e) => {
@@ -33,7 +33,7 @@ const EditStudent = () => {
             address: address,
             tel: tel
         })
-        history.push('/showStudent')
+        navigate.push('/showStudent')
     }
 
     useEffect(() => {

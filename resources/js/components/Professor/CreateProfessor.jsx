@@ -2,13 +2,13 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 
 
 
 
-const ruta = 'http://localhost:8000/api/professor_insert';
+const ruta = 'http://localhost:81/api/professor_insert';
 const defaultSelectValue = "---";
 
 const CreateProfessor = () => {
@@ -24,7 +24,7 @@ const CreateProfessor = () => {
     const [cedula, setCedula] = useState('')
     const [academic_degree, setAcademic_degree] = useState('')
     const [specialty, setSpecialty] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const store = async (e) => {
         e.preventDefault()
@@ -43,7 +43,7 @@ const CreateProfessor = () => {
             academic_degree: academic_degree,
             specialty: specialty
         })
-        history.push('/showProfessor')
+        navigate.push('/showProfessor')
     }
 
     return (

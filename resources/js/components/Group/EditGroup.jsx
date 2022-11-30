@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/group_update/'
-const ruta2 = 'http://localhost:8000/api/group_show/'
-const ruta3 = 'http://localhost:8000/api/career_index'
+const ruta = 'http://localhost:81/api/group_update/'
+const ruta2 = 'http://localhost:81/api/group_show/'
+const ruta3 = 'http://localhost:81/api/career_index'
 
 
 
@@ -14,7 +14,7 @@ const EditGroup = () => {
     const [name, setName] = useState('')
     const [size, setSize] = useState('')
     const [idCar, setIdCar] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
 
@@ -27,7 +27,7 @@ const EditGroup = () => {
             size: size,
             idCar: idCar,
         })
-        history.push('/showGroup')
+        navigate.push('/showGroup')
     }
 
     useEffect(() => {

@@ -23,7 +23,7 @@ class PassportAuthController extends Controller
     public function register(Request $request){
         $this->validate($request, [
             'name' => 'required|min:4',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
         ]);
 
@@ -33,14 +33,14 @@ class PassportAuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        $token = $user->createToken('LaravelAuthApp')->accessToken;
+        $token = $user->createToken('LaravelAuthApp')->access_token;
         return response()->json(['token' => $token], 200);
     }
 
     public function login(Request $request){
         $data = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
         ];
 
         if(auth()->attempt($data)){
@@ -50,6 +50,11 @@ class PassportAuthController extends Controller
         else{
             return response()->json(['error' => 'No Autorizado'], 401);
         }
+    }
+
+    public function authenticatedUserDetails(){
+        //returns details
+        return response()->json(['authenticated-user' => auth()->user()], 200);
     }
 
     

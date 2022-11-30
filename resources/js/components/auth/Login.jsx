@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Container, Row, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 
-const ruta = 'http://localhost:3306/api/login';
+const ruta = 'http://localhost:81/api/login';
 
 const Login = () => {
 
@@ -15,7 +15,7 @@ const Login = () => {
   })
 
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const onChange = (e) => {
     e.persist();
@@ -33,14 +33,14 @@ const Login = () => {
       {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Accept': 'aplication/json'
+          'Accept': 'aplication/json',
         }
       }
     ).then(response => {
       console.log('response');
       console.log(response.data.token);
       localStorage.setItem("user-info", JSON.stringify(response))
-      history.push({
+      navigate.push({
 
         pathname: "/HomePage",
         state: { token: response.data.token }

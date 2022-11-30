@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 
-const ruta = 'http://localhost:8000/api';
+const ruta = 'http://localhost:81/api';
 const ShowCareer = () => {
     const [careers, setCareers] = useState([])
 

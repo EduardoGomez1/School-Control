@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/professor_update/'
-const ruta2 = 'http://localhost:8000/api/professor_show/'
+const ruta = 'http://localhost:81/api/professor_update/'
+const ruta2 = 'http://localhost:81/api/professor_show/'
 const defaultSelectValue = "---";
 
 const EditProfessor = () => {
@@ -22,7 +22,7 @@ const EditProfessor = () => {
     const [academic_degree, setAcademic_degree] = useState('')
     const [specialty, setSpecialty] = useState('')
 
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     const update = async (e) => {
@@ -40,7 +40,7 @@ const EditProfessor = () => {
             academic_degree: academic_degree,
             specialty: specialty
         })
-        history.push('/showProfessor')
+        navigate.push('/showProfessor')
     }
     useEffect(() => {
         const getProfessorById = async () => {

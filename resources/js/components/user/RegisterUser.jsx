@@ -1,16 +1,16 @@
 import { Container } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
 
-const ruta = 'http://localhost:8000/api/register';
+const ruta = 'http://localhost:81/api/register';
 
 const RegisterUser = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const store = async (e) => {
         e.preventDefault()
@@ -19,7 +19,7 @@ const RegisterUser = () => {
             email: email,
             password: password,
         })
-        history.push('/showUser');
+        navigate.push('/showUser');
     }
 
     return (

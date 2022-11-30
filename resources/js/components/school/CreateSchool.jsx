@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
-const ruta = 'http://localhost:8000/api/school_insert';
+const ruta = 'http://localhost:81/api/school_insert';
 
 const CreateSchool = () => {
     const [clave, setClave] = useState('')
@@ -13,7 +13,7 @@ const CreateSchool = () => {
     const [address, setAddress] = useState('')
     const [tel, setTel] = useState('')
     const [email, setEmail] = useState('@gmail.com')
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const store = async (e) => {
         e.preventDefault()
@@ -24,7 +24,7 @@ const CreateSchool = () => {
             tel: tel,
             email: email
         })
-        history.push('/showSchool')
+        navigate.push('/showSchool')
     }
 
     return (

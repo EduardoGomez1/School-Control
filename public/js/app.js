@@ -7238,9 +7238,9 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
+/***/ "./resources/js/app.jsx":
 /*!*****************************!*\
-  !*** ./resources/js/app.js ***!
+  !*** ./resources/js/app.jsx ***!
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -7344,8 +7344,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/career_insert';
-var ruta3 = 'http://localhost:8000/api/school_index';
+var ruta = 'http://localhost:81/api/career_insert';
+var ruta3 = 'http://localhost:81/api/school_index';
 var defaultSelectValue = "---";
 
 var CreateCareer = function CreateCareer() {
@@ -7600,9 +7600,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/career_update/';
-var ruta2 = 'http://localhost:8000/api/career_show/';
-var ruta3 = 'http://localhost:8000/api/school_index';
+var ruta = 'http://localhost:81/api/career_update/';
+var ruta2 = 'http://localhost:81/api/career_show/';
+var ruta3 = 'http://localhost:81/api/school_index';
 var defaultSelectValue = "---";
 
 var EditCareer = function EditCareer() {
@@ -7888,7 +7888,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowCareer = function ShowCareer() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -8067,8 +8067,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/group_insert';
-var ruta3 = 'http://localhost:8000/api/career_index';
+var ruta = 'http://localhost:81/api/group_insert';
+var ruta3 = 'http://localhost:81/api/career_index';
 
 var CreateGroup = function CreateGroup() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -8282,9 +8282,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/group_update/';
-var ruta2 = 'http://localhost:8000/api/group_show/';
-var ruta3 = 'http://localhost:8000/api/career_index';
+var ruta = 'http://localhost:81/api/group_update/';
+var ruta2 = 'http://localhost:81/api/group_show/';
+var ruta3 = 'http://localhost:81/api/career_index';
 
 var EditGroup = function EditGroup() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -8528,7 +8528,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowGroup = function ShowGroup() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -9172,9 +9172,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/studentSubject_insert';
-var ruta3 = 'http://localhost:8000/api/subject_index';
-var ruta4 = 'http://localhost:8000/api/student_index';
+var ruta = 'http://localhost:81/api/studentSubject_insert';
+var ruta3 = 'http://localhost:81/api/subject_index';
+var ruta4 = 'http://localhost:81/api/student_index';
 
 var CreateNotes = function CreateNotes() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -9433,10 +9433,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/studentSubject_update/';
-var ruta2 = 'http://localhost:8000/api/studentSubject_show/';
-var ruta3 = 'http://localhost:8000/api/subject_index';
-var ruta4 = 'http://localhost:8000/api/student_index';
+var ruta = 'http://localhost:81/api/studentSubject_update/';
+var ruta2 = 'http://localhost:81/api/studentSubject_show/';
+var ruta3 = 'http://localhost:81/api/subject_index';
+var ruta4 = 'http://localhost:81/api/student_index';
 
 var EditNotes = function EditNotes() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -9729,7 +9729,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowNotes = function ShowNotes() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -9951,7 +9951,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/professor_insert';
+var ruta = 'http://localhost:81/api/professor_insert';
 var defaultSelectValue = "---";
 
 var CreateProfessor = function CreateProfessor() {
@@ -10291,8 +10291,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/professor_update/';
-var ruta2 = 'http://localhost:8000/api/professor_show/';
+var ruta = 'http://localhost:81/api/professor_update/';
+var ruta2 = 'http://localhost:81/api/professor_show/';
 var defaultSelectValue = "---";
 
 var EditProfessor = function EditProfessor() {
@@ -10673,7 +10673,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 var defaultSelectValue = "---";
 
 var ShowProfessor = function ShowProfessor() {
@@ -10881,8 +10881,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/subject_insert';
-var ruta3 = 'http://localhost:8000/api/semester_index';
+var ruta = 'http://localhost:81/api/subject_insert';
+var ruta3 = 'http://localhost:81/api/semester_index';
 
 var CreateSubject = function CreateSubject() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -11095,9 +11095,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/subject_update/';
-var ruta2 = 'http://localhost:8000/api/subject_show/';
-var ruta3 = 'http://localhost:8000/api/semester_index';
+var ruta = 'http://localhost:81/api/subject_update/';
+var ruta2 = 'http://localhost:81/api/subject_show/';
+var ruta3 = 'http://localhost:81/api/semester_index';
 
 var EditSubject = function EditSubject() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -11340,7 +11340,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowSubject = function ShowSubject() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -11518,7 +11518,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/login';
+var ruta = 'http://localhost:81/api/login';
 
 var Login = function Login() {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
@@ -11676,7 +11676,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/register';
+var ruta = 'http://localhost:81/api/register';
 
 var Register = function Register() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -11725,7 +11725,7 @@ var Register = function Register() {
                 body: JSON.stringify(item),
                 headers: {
                   "Content-Type": 'application/json',
-                  "Accept": 'application/json'
+                  "Accept": 'application/json',
                 }
               });
 
@@ -11872,7 +11872,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/school_insert';
+var ruta = 'http://localhost:81/api/school_insert';
 
 var CreateSchool = function CreateSchool() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -12071,8 +12071,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://127.0.0.1:8000/api/school_update/';
-var ruta2 = 'http://127.0.0.1:8000/api/school_show/';
+var ruta = 'http://127.0.0.1:3306/api/school_update/';
+var ruta2 = 'http://127.0.0.1:3306/api/school_show/';
 
 var EditSchool = function EditSchool() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''),
@@ -12306,7 +12306,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowSchool = function ShowSchool() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -12489,8 +12489,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/semester_insert';
-var ruta3 = 'http://localhost:8000/api/career_index';
+var ruta = 'http://localhost:81/api/semester_insert';
+var ruta3 = 'http://localhost:81/api/career_index';
 var defaultSelectValue = "---";
 
 var CreateSemester = function CreateSemester() {
@@ -12761,9 +12761,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/semester_update/';
-var ruta2 = 'http://localhost:8000/api/semester_show/';
-var ruta3 = 'http://localhost:8000/api/career_index';
+var ruta = 'http://localhost:81/api/semester_update/';
+var ruta2 = 'http://localhost:81/api/semester_show/';
+var ruta3 = 'http://localhost:81/api/career_index';
 var defaultSelectValue = "---";
 
 var EditSemester = function EditSemester() {
@@ -13064,7 +13064,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowSemester = function ShowSemester() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -13239,7 +13239,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/student_insert';
+var ruta = 'http://localhost:81/api/student_insert';
 var defaultSelectValue = "---";
 
 var CreateStudent = function CreateStudent() {
@@ -13526,8 +13526,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/student_update/';
-var ruta2 = 'http://localhost:8000/api/student_show/';
+var ruta = 'http://localhost:81/api/student_update/';
+var ruta2 = 'http://localhost:81/api/student_show/';
 var defaultSelectValue = "---";
 
 var EditStudent = function EditStudent() {
@@ -13836,7 +13836,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowStudent = function ShowStudent() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -14029,7 +14029,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api/register';
+var ruta = 'http://localhost:81/api/register';
 
 var RegisterUser = function RegisterUser() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
@@ -14181,7 +14181,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ruta = 'http://localhost:8000/api';
+var ruta = 'http://localhost:81/api';
 
 var ShowUser = function ShowUser() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -77725,7 +77725,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.jsx")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

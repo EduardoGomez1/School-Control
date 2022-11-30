@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
-const ruta = 'http://127.0.0.1:8000/api/school_update/'
-const ruta2 = 'http://127.0.0.1:8000/api/school_show/'
+const ruta = 'http://localhost:81/api/school_update/'
+const ruta2 = 'http://localhost:81/api/school_show/'
 
 const EditSchool = () => {
     const [clave, setClave] = useState('')
@@ -13,7 +13,7 @@ const EditSchool = () => {
     const [address, setAddress] = useState('')
     const [tel, setTel] = useState('')
     const [email, setEmail] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     const update = async (e) => {
@@ -25,7 +25,7 @@ const EditSchool = () => {
             tel: tel,
             email: email
         })
-        history.push('/showSchool')
+        navigate.push('/showSchool')
     }
 
 

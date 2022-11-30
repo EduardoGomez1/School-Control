@@ -1,22 +1,22 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 
 
-const ruta = 'http://localhost:8000/api/studentSubject_insert';
-const ruta3 = 'http://localhost:8000/api/subject_index'
-const ruta4 = 'http://localhost:8000/api/student_index'
+const ruta = 'http://localhost:81/api/studentSubject_insert';
+const ruta3 = 'http://localhost:81/api/subject_index'
+const ruta4 = 'http://localhost:81/api/student_index'
 
 const CreateNotes = () => {
     const [idSubject, setIdSbject] = useState('')
     const [idStudent, setIdStudent] = useState('')
     const [cal, setCal] = useState('70')
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const [subject, setSubject] = useState([])
     const [student, setStudent] = useState([])
@@ -28,7 +28,7 @@ const CreateNotes = () => {
             idStudent: idStudent,
             cal: cal
         })
-        history.push('/showNotes')
+        navigate.push('/showNotes')
     }
 
 

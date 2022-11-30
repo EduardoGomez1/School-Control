@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ruta = 'http://localhost:8000/api/career_update/'
-const ruta2 = 'http://localhost:8000/api/career_show/'
-const ruta3 = 'http://localhost:8000/api/school_index'
+const ruta = 'http://localhost:81/api/career_update/'
+const ruta2 = 'http://localhost:81/api/career_show/'
+const ruta3 = 'http://localhost:81/api/school_index'
 
 const defaultSelectValue = "---";
 
@@ -15,7 +15,7 @@ const EditCareer = () => {
     const [name, setName] = useState('')
     const [area, setArea] = useState('')
     const [idSchool, setIdSchool] = useState('')
-    const history = useHistory()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     const [school, setSchool] = useState([])
@@ -28,7 +28,7 @@ const EditCareer = () => {
             area: area,
             idSchool: idSchool
         })
-        history.push('/showCareer')
+        navigate.push('/showCareer')
     }
 
 

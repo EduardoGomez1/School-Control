@@ -1,17 +1,17 @@
 
 import { Container } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
 
-const ruta = 'http://localhost:8000/api/register';
+const ruta = 'http://localhost:81/api/register';
 
 const Register = () => {
 
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
-            history.push("/HomePage")
+            navigate.push("/HomePage")
         }
     }, [])
 
@@ -19,7 +19,7 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     async function signUp() {
         let item = { name, email, password }
@@ -29,14 +29,14 @@ const Register = () => {
             method: 'POST',
             body: JSON.stringify(item),
             headers: {
-                "Content-Type": 'application/json',
-                "Accept": 'application/json'
+                "Content-Type": 'multipart/form-data',
+                "Accept": 'aplication/json',
             }
         });
 
         result = await result.json()
         localStorage.setItem("user-info", JSON.stringify(result))
-        history.push("/HomePage")
+        navigate.push("/HomePage")
     }
 
 
