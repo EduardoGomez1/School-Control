@@ -16,7 +16,6 @@ class CreateSemestersTable extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idCareer')->references('id')->on('careers')->onDelete('cascade');
-            //$table->foreignId('idSubject')->references('id')->on('subjects')->onDelete('cascade');
             $table->string('name');
             $table->string('period');  //Periodo escolar
             $table->timestamps();

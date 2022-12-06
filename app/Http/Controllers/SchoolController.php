@@ -29,7 +29,7 @@ class SchoolController extends Controller
             'clave' => 'required',
             'name' => 'required',
             'address' => 'required',
-            'tel' => 'required',
+            'tel' => 'required|min:10|max:10',
             'email' => 'required|email',
         ]);
 

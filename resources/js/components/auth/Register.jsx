@@ -24,15 +24,6 @@ const Register = () => {
         let item = { name, email, password }
         console.warn(item)
 
-        // let result = await axios(ruta, {
-        //     method: 'POST',
-        //     body: JSON.stringify(item),
-        //     headers: {
-        //         "Content-Type": 'multipart/form-data',
-        //         // "Accept": 'aplication/json',
-        //     }
-        // });
-
         let result = await axios.post(ruta, item)
 
         if(result){

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'email',
         'name',
@@ -20,7 +21,8 @@ class Student extends Model
     ];
 
      //one to many(Students-StudentSubject)
-    public function studentSubject(){
+    public function studentSubject()
+    {
         return $this->hasMany('App\Models\StudentSubject','id');
     }
 }

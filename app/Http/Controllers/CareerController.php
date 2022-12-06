@@ -62,18 +62,7 @@ class CareerController extends Controller
     
     public function update(Request $request, $id)
     {
-        /*validacion de los campos
-        $validator = Validator::make($request->all(), [
-            'clave' => 'required|unique:careers,clave',
-            'name' => 'required|unique:careers,name',
-            'area' => 'required',
-            'idSchool' => 'required',
-        ]);
 
-        if($validator->fails()){
-            return $validator->errors();
-        }
-        */
         $career = Career::find($id);
         $career->clave = $request->clave;
         $career->name = $request->name;

@@ -29,12 +29,6 @@ const Login = () => {
     formData.append("password", formValue.password)
     axios.post(ruta,
       formData,
-      // {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //     'Accept': 'aplication/json',
-      //   }
-      // }
     ).then(response => {
 
       localStorage.setItem("user-info", response.data.token)
@@ -101,8 +95,3 @@ const Login = () => {
 }
 
 export default Login;
-
-
-// if (document.getElementById('main')) {
-//   ReactDOM.render(<Login />, document.getElementById('main'));
-// }

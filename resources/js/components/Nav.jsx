@@ -3,7 +3,6 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 const Navigation = () => {
 
-    // let users = JSON.parse(localStorage.getItem('user-info'))
     const navigate = useNavigate();
     function logOut() {
         localStorage.clear();

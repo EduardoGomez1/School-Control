@@ -36,7 +36,7 @@ class StudentController extends Controller
             'sex' => 'required',
             'curp' => 'required|max:18|unique:students,curp',
             'address' => 'required',
-            'tel' => 'required|max:10|unique:students,tel',
+            'tel' => 'required|min:10|max:10|unique:students,tel',
 
         ]);
 
@@ -73,23 +73,7 @@ class StudentController extends Controller
     
     public function update(Request $request, $id)
     {
-        /*validacion de los campos
-        $validator = Validator::make($request->all(), [
-            'idUser' => 'required',
-            'name' => 'required',
-            'firstName' => '',
-            'lastName' => 'required',
-            'sex' => 'required',
-            'curp' => 'required|max:18|unique:students,curp',
-            'address' => 'required',
-            'tel' => 'required|max:10|unique:students,tel',
 
-        ]);
-
-        if($validator->fails()){
-            return $validator->errors();
-        }
-        */
         $student = Student::find($id);
         $student->email = $request->email;
         $student->name = $request->name;
