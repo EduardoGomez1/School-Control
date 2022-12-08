@@ -43,7 +43,6 @@ const CreateCareer = () => {
         const getAllSchool = async () => {
             const response = await axios.get(ruta3, HEADERS);
             setSchool(response.data);
-            //console.log(response.data);
         };
 
         getAllSchool();
@@ -51,7 +50,6 @@ const CreateCareer = () => {
 
     const handle = function (e) {
         const option = e.target.value;
-        //console.log(option);
 
         setIdSchool(option);
     };

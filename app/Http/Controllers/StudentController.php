@@ -29,14 +29,14 @@ class StudentController extends Controller
     {
         /*validacion de los campos*/
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'email' => 'required|email',
             'name' => 'required',
-            'firstName' => '',
+            'firstName' => 'required',
             'lastName' => 'required',
             'sex' => 'required',
-            'curp' => 'required|max:18|unique:students,curp',
+            'curp' => 'required|max:18',
             'address' => 'required',
-            'tel' => 'required|min:10|max:10|unique:students,tel',
+            'tel' => 'required',
 
         ]);
 

@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 const ruta = "http://localhost:8000/api";
 const ShowSchool = () => {
+    const token = localStorage.getItem('user-info');
     const HEADERS = {
         headers: {
             Accept: "application/json",
-            Authorization: `Bearer ${localStorage.getItem("user-info")}`,
+            Authorization: `Bearer ${ token }`,
         },
     };
 
@@ -18,7 +19,7 @@ const ShowSchool = () => {
     }, []);
 
     const getAllSchools = async () => {
-        const response = await axios.get(`${ruta}/school_index`, HEADERS);
+        const response = await axios.get(`${ruta}/school_index`,HEADERS);
         setSchools(response.data);
         //console.log(response.data);
     };

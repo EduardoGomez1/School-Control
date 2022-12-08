@@ -13,6 +13,7 @@ const Register = () => {
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
             navigate("/HomePage")
+            console.log(response)
         }
     }, [])
 
@@ -22,12 +23,12 @@ const Register = () => {
 
     async function signUp() {
         let item = { name, email, password }
-        console.warn(item)
+        //console.warn(item)
 
         let result = await axios.post(ruta, item)
 
         if(result){
-            localStorage.setItem("user-info", JSON.stringify(result?.data?.token))
+            localStorage.setItem("user-info", JSON.stringify(result?.data?.access_token))
             navigate("/HomePage")
         }
     }

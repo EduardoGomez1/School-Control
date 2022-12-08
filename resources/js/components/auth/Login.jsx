@@ -31,7 +31,8 @@ const Login = () => {
       formData,
     ).then(response => {
 
-      localStorage.setItem("user-info", response.data.token)
+      localStorage.setItem("user-info", response.data.access_token)
+
       navigate({
 
         pathname: "/HomePage",

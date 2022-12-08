@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class PassportAuthController extends Controller
 {
@@ -22,38 +24,35 @@ class PassportAuthController extends Controller
 
     public function register(Request $request)
     {
-        // $datos = $request->json()->all();
-        // dd($request);
-
-        $this->validate($request, [
-            'name' => 'required|min:4',
+        $validateData = $request->validate([
+            'name' => 'required|min:4|max:150',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+        $validateData['password'] = Hash::make($request->password);
+
+        $user = User::create($validateData);
 
         $token = $user->createToken('LaravelAuthApp')->accessToken;
-        return response()->json(['token' => $token], 200);
+        return response([
+            'user' => $user,
+            'access_token' => $token
+        ], 200);
     }
 
     public function login(Request $request)
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        $data = $request ->validate([
+            'email' => 'email|required',
+            'password' => 'required',
+        ]);
 
-        if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
-            return response()->json(['token' => $token], 200);
-        } else {
-            return response()->json(['error' => 'No Autorizado'], 401);
+        if (!auth()->attempt($data)) {
+            return response(['error' => 'No Autorizado'], 401);
         }
+        $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
+        return response(['user' => auth()->user(), 'access_token' => $token], 200);
     }
 
     public function authenticatedUserDetails()

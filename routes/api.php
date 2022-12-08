@@ -27,10 +27,8 @@ use App\Http\Controllers\ProfessorSubjectController;
 Route::post('register', [PassportAuthController::class, 'register']);
 Route::post('login', [PassportAuthController::class, 'login']);
 
-
-
 Route::middleware('auth:api')->group(function(){
-
+/*Users*/
 Route::get('user', [passportAuthController::class,'authenticatedUserDetails']);
 Route::get('/user_index', [PassportAuthController::class, 'index']);
 Route::post('/user_delete/{id}', [PassportAuthController::class, 'destroy']);
